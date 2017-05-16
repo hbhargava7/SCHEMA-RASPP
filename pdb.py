@@ -151,7 +151,3 @@ def get(file_name, chain_ids=['A',' ']):
 	residues = File().read(file(file_name,'r'))
 	# print sequence(residues, chain_ids)
 	return sequence(residues, chain_ids)
-
-def get(file_name, chain_ids=['A',' ']):
-	residues = File().read(file(file_name,'r'))
-	print sequence(residues, chain_ids)
