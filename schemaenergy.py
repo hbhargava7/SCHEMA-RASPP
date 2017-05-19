@@ -160,7 +160,7 @@ def main(args):
 	parent_list = schema.readMultipleSequenceAlignmentFile(file(msa_file, 'r'))
 	parents = [p for (k,p) in parent_list]
 	
-	crossovers = [int(x) for x in arg_dict[ARG_CROSSOVER_FILE]]
+	crossovers = [int(x) for x in arg_dict[ARG_CROSSOVER_FILE].split()]
 	fragments = schema.getFragments(crossovers, parents[0])
 
 	# Get the contacts
