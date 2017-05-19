@@ -277,6 +277,8 @@ def readMultipleSequenceAlignmentFile(f):
 	for line in f.readlines():
 		if line[0] == '#':  # comment line
 			continue
+		if line.startswith("CLUSTAL"):
+			continue
 		flds = line.strip().split()
 		# Skip lines with too little data to be sequence info
 		if len(flds) < 2:
