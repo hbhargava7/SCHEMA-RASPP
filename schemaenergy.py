@@ -96,11 +96,11 @@ def confirm_arguments(arg_dict):
 			res = False
 			
 		if not ARG_CROSSOVER_FILE in arg_keys:
-			print "  You must provide a crossover file (-%s <file>)" % ARG_CROSSOVER_FILE
+			print "  You must provide a list of crossover sites. (-%s <file>)" % ARG_CROSSOVER_FILE
 			res = False
-		elif not os.path.isfile(arg_dict[ARG_CROSSOVER_FILE]):
-			print "  Can't find crossover file %s" % arg_dict[ARG_CROSSOVER_FILE]
-			res = False
+		# elif not os.path.isfile(arg_dict[ARG_CROSSOVER_FILE]):
+		# 	print "  Can't find crossover file %s" % arg_dict[ARG_CROSSOVER_FILE]
+		# 	res = False
 			
 		if not ARG_CONTACT_FILE in arg_keys:
 			print "  You must provide a contact file (-%s <file>)" % ARG_CONTACT_FILE
@@ -160,7 +160,7 @@ def main(args):
 	parent_list = schema.readMultipleSequenceAlignmentFile(file(msa_file, 'r'))
 	parents = [p for (k,p) in parent_list]
 	
-	crossovers = schema.readCrossoverFile(file(arg_dict[ARG_CROSSOVER_FILE], 'r'))
+	crossovers = [int(x) for x in arg_dict["-xo"]]
 	fragments = schema.getFragments(crossovers, parents[0])
 
 	# Get the contacts
